@@ -563,13 +563,13 @@ def main(args):
                         # HW2 DONE - 
                         # Determine the value of 'nextnonterminal' and 'nextvalues' for this case
                         # 1 if not terminal, 0 if terminal
-                        nextnonterminal = 0
+                        nextnonterminal = 1-next_done
                         nextvalues = next_value
                     else:
                         # HW2 DONE -
                         # Determine the value of 'nextnonterminal' and 'nextvalues' for this case
                         # 1 if not terminal, 0 if terminal
-                        nextnonterminal = 1
+                        nextnonterminal = 1-dones[t]
                         nextvalues = values[t + 1]
 
                     # Compute the TD error: δ_t = r_t + γ V(s_{t+1}) - V(s_t)
