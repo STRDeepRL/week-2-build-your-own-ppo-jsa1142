@@ -42,3 +42,20 @@ Utilizing your baseline codebase tagged `v2.1`, please pinpoint the `Rollout Pha
 ### Answer:
 - **Rollout Phase**: [lines 500-528](multigrid/scripts/train_ppo_cleanrl.py)
 - **Learning Phase**: [lines 620-707](multigrid/scripts/train_ppo_cleanrl.py)
+
+## Task 3 - Tuning the 🎲 **Exploration & Exploitation Strategies** using Algorithm-Specific Hyperparameters
+
+### Deepening Your Understanding to Interpret Your Results
+***Q.1*** Train a baseline agent using default or adjusted parameter values. Capture and present Tensorboard screenshots to report the following training metrics. Indicate the `Sample Efficency`, the number of training timesteps and policy updates, required to achieve the Training Baseline Thresholds:
+
+The sample efficiency ~9M steps.
+
+![Metric 1](metrics_1.png)
+![Metric 2](metrics_2.png)
+![Metric 3](metrics_3.png)
+
+**CleanRL Agent Training Baseline Thresholds for Your Reference**:
+- `episodic_length` should converge to a solution within 40 time steps and maintain for at least 100k time steps at the end of training.
+- `episodic_return` should converge to consistently achieve 2.0+ returns, enduring for a minimum of the last 100k time steps.
+- `explained_variance` should stabilize at a level above 0.6 for at least the last 100k time steps.
+- `entropy` should settle at values below 0.3 for a minimum of 100k final training steps.
