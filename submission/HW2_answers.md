@@ -48,6 +48,10 @@ Utilizing your baseline codebase tagged `v2.1`, please pinpoint the `Rollout Pha
 ### Deepening Your Understanding to Interpret Your Results
 ***Q.1*** Train a baseline agent using default or adjusted parameter values. Capture and present Tensorboard screenshots to report the following training metrics. Indicate the `Sample Efficency`, the number of training timesteps and policy updates, required to achieve the Training Baseline Thresholds:
 
+Only running ~300k steps does not hit the Baseline Thresholds.
+
+![Baseline metrics](baseline_metrics.png)
+
 
 **CleanRL Agent Training Baseline Thresholds for Your Reference**:
 - `episodic_length` should converge to a solution within 40 time steps and maintain for at least 100k time steps at the end of training.
