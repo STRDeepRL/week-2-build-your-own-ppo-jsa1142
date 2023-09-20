@@ -528,7 +528,7 @@ def main(args):
                             break
 
 
-            # HW2 TODO 1 - Implement Generalized Advantage Estimation (GAE) to Estimate the Advantage 
+            # HW2 DONE 1 - Implement Generalized Advantage Estimation (GAE) to Estimate the Advantage 
             """
             NOTE:
             This section calculates the advantages and returns, which are essential parts of the PPO algorithm.
@@ -560,23 +560,23 @@ def main(args):
                 # Looping through each timestep in reverse to calculate the GAE advantage using the recursive formula
                 for t in reversed(range(args.num_steps)):
                     if t == args.num_steps - 1:
-                        # HW2 TODO - 
+                        # HW2 DONE - 
                         # Determine the value of 'nextnonterminal' and 'nextvalues' for this case
                         # 1 if not terminal, 0 if terminal
-                        nextnonterminal = ________
+                        nextnonterminal = 0
                         nextvalues = next_value
                     else:
-                        # HW2 TODO -
+                        # HW2 DONE -
                         # Determine the value of 'nextnonterminal' and 'nextvalues' for this case
                         # 1 if not terminal, 0 if terminal
-                        nextnonterminal = ________
+                        nextnonterminal = 1
                         nextvalues = values[t + 1]
 
                     # Compute the TD error: δ_t = r_t + γ V(s_{t+1}) - V(s_t)
-                    # HW2 TODO -
+                    # HW2 DONE -
                     # Complete the calculation for 'delta' using the formula provided above
                     # Hint: Ensure to effectively nullify the future reward when the next state is terminal (the end of the episode
-                    delta = ________
+                    delta = rewards[t] + args.gamma * nextvalues * nextnonterminal - values[t]
 
                     # Computing the GAE advantage at the current timestep using this form of recursive formula.
                     # The GAE formula is:
@@ -586,15 +586,15 @@ def main(args):
                     #    - A_(t+1)^GAE(γ,λ) is the advantage estimate of the next timestep (which is stored in `lastgaelam`).
                     #    - γ is the discount factor (args.gamma).
                     #    - λ is the hyperparameter that determines the trade-off between bias and variance in the advantage estimate (args.gae_lambda).
-                    # HW2 TODO -
+                    # HW2 DONE -
                     # Fill in the blank to complete the computation for the GAE advantage at the current timestep
                     # Hint: Ensure to effectively nullify the future reward when the next state is terminal (the end of the episode
-                    advantages[t] = lastgaelam = ________
+                    advantages[t] = lastgaelam = delta + args.gamma * args.gae_lambda * nextnonterminal * lastgaelam
 
                 # Compute returns for each state: return = value + advantage
-                # HW2 TODO -
+                # HW2 DONE - 
                 # Complete the calculation for 'returns' using the relationship between advantage and value
-                returns = ________
+                returns = values + advantages
 
             # Flatten the batch to fit the neural network's input dimensions
             # NOTE: This part is reshaping the tensor structure for ease of processing
