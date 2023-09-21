@@ -751,7 +751,7 @@ def main(args):
             writer.add_scalar("losses/explained_variance", explained_var, global_step)
             # Compute and display the number of environment steps processed per second
             # This serves as a performance metric for the training loop itself
-            print("Steps per Second (SPS):", int(global_step / (time.time() - start_time)))
+            # print("Steps per Second (SPS):", int(global_step / (time.time() - start_time)))
             writer.add_scalar("charts/SPS", int(global_step / (time.time() - start_time)), global_step)
 
             if args.save_checkpoint:
