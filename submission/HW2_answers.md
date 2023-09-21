@@ -83,6 +83,8 @@ Additionally, consider tweaking the following generic Deep RL hyperparameters:
 
 I run a three-stage hyperparameter search in [the hyperparameter search script](./hyperparameter_search.py).
 
+![Hyperparameter search](hp_search.png)
+
 The only run that came close to possibly hitting the benchmarks was 
 `--learning-rate 0.0003 --gamma 0.98 --gae-lambda 0.97 --clip-coef 0.25 --ent-coef 0.01 --vf-coef 0.6 --target-kl 0.02 --num-steps 128 --num-envs 8 --update-epochs 3 --clip-vloss False`
 and this only ran for 300k steps, so did not get close to the benchmarks.
@@ -90,7 +92,13 @@ Re-running this model for 10M steps hits the benchmark. This is hitting the benc
 
 ![CleanRL Training](cleanrl_training.png)
 
-![Hyperparameter search](hp_search.png)
+Here's a video of the agent.
+
+[Video of agent](./cleanRL/videos/MultiGrid-CompetativeRedBlueDoor-v2-DTDE-Red-Single-with-Obsticle__train_ppo_cleanrl__JamesStankowicz__3e2d091__1__1695313374/rl-video-episode-19000.mp4)
+
+There are some clear inefficiencies in the agent.
+It first goes to the door before picking up the key.
+Then after picking up the key it goes on a large loop instead of going straight to the door.
 
 **Suggestion for future courses**: Performing a long hyperparameter search is not fun or a rewarding learning experience for the student.
 It would have been more rewarding to give us optimal hyperparameters as a way to verify the changes to the code were correct.
