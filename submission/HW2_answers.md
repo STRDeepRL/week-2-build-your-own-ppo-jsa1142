@@ -104,6 +104,12 @@ As the same as Task 2&3, document the following training metrics, showcasing the
 
 **Suggestion for future courses** Give the regex in the same location as the list of metrics. I spent time converting the markdown list to regex before realizing it was in the "tips" section.
 
-The model is converging around 600k steps:
+Here are the metrics from the run:
+
+![RLlib Metrics 1](rllib_metrics_1.png)
+![RLlib Metrics 2](rllib_metrics_2.png)
+![RLlib Metrics 3](rllib_metrics_3.png)
+
+The model is converging around 600k steps, as seen in the metrics discussed for the baseline (plus a few plots from in-exact regex and repeats):
 
 ![Converging model](1v1_converging_model.png)
