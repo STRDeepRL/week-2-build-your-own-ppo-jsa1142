@@ -2,7 +2,7 @@ import numpy as np
 import subprocess
 
 def main():
-    # Round 1
+    # # Round 1
     # hyperparameters = [
     #     ('learning-rate', [3e-4, 1e-4, 3e-5], 3e-4),
     #     ('gamma', [0.98, 0.99, 0.995], 0.99),
@@ -16,22 +16,38 @@ def main():
     #     ('update_epochs', [3, 4, 5, 6], 4),
     #     ('clip-vloss', [True, False], True),
     # ]
-    # learningrate0.0001_gamma0.995_gaelambda0.9_clipcoef0.25_entcoef0.005_vfcoef0.3_targetkl0.03_num_steps64_num_envs8_update_epochs5_clipvlossTrue
-    # Round 2
-    hyperparameters = [
-        ('learning-rate', [2e-4, 1e-4, 0.5e-4], 1e-4),
-        ('gamma', [0.9925, 0.995, 0.9975], 0.995),
-        ('gae-lambda', [0.89, 0.9, 0.91], 0.90),
-        ('clip-coef', [0.225, 0.25, 0.275], 0.25),
-        ('ent-coef', [0.0025, 0.0050, 0.0075], 0.005),
-        ('vf-coef', [0.25, 0.3, 0.35], 0.3),
-        ('target-kl', [0.025, 0.030, 0.035, None], 0.03),
-        ('num_steps', [32, 64, 128], 64),
-        ('num_envs', [4, 8, 16, 32], 8),
-        ('update_epochs', [3, 4, 5, 6], 5),
-        ('clip-vloss', [True, False], True),
-    ]
-    total_timesteps = 300_000
+    # Round 1 best
+    # learningrate0.0003_gamma0.98_gaelambda0.97_clipcoef0.25_entcoef0.01_vfcoef0.6_targetkl0.02_num_steps128_num_envs8_update_epochs3_clipvlossFalse
+    # # Round 2
+    # hyperparameters = [
+    #     ('learning-rate', [2e-4, 3e-4, 4e-4], 3e-4),
+    #     ('gamma', [0.975, 0.980, 0.985], 0.98),
+    #     ('gae-lambda', [0.965, 0.970, 0.975], 0.97),
+    #     ('clip-coef', [0.225, 0.250, 0.275], 0.25),
+    #     ('ent-coef', [0.0075, 0.0100, 0.0125], 0.01),
+    #     ('vf-coef', [0.55, 0.60, 0.65], 0.6),
+    #     ('target-kl', [0.015, 0.020, 0.025], 0.020),
+    #     ('num_steps', [64, 128, 256], 128),
+    #     ('num_envs', [4, 8, 16, 32], 8),
+    #     ('update_epochs', [2, 3, 4], 3),
+    #     ('clip-vloss', [True, False], True),
+    # ]
+    # # Round 2 best
+    # # learningrate0.0003_gamma0.98_gaelambda0.97_clipcoef0.25_entcoef0.01_vfcoef0.6_targetkl0.02_num_steps128_num_envs8_update_epochs3_clipvlossFalse
+    # hyperparameters = [
+    #     ('learning-rate', [3e-4], 3e-4),
+    #     ('gamma', [0.980], 0.98),
+    #     ('gae-lambda', [0.965, 0.970, 0.975], 0.97),
+    #     ('clip-coef', [0.225, 0.250, 0.275], 0.25),
+    #     ('ent-coef', [0.0075, 0.0100, 0.0125], 0.01),
+    #     ('vf-coef', [0.55, 0.60, 0.65], 0.6),
+    #     ('target-kl', [0.015, 0.020, 0.025, None], 0.020),
+    #     ('num_steps', [64, 128, 256], 128),
+    #     ('num_envs', [4, 8, 16, 32], 8),
+    #     ('update_epochs', [2, 3, 4], 3),
+    #     ('clip-vloss', [True, False], True),
+    # ]
+    # total_timesteps = 300_000
     number_of_experiments = 10
     for n_iter in range(number_of_experiments):
         print()
@@ -41,24 +57,26 @@ def main():
         print(f"Experiment {n_iter+1}/{number_of_experiments}")
         print("="*80)
         # Sample hyperparameters
-        hyperparams = {}
+        to_use = {}
         for name, choices, default in hyperparameters:
             # Find the position of name in hyperparameters
             # rank = 1 + [h[0] for h in hyperparameters].index(name)
             # prob = 1/(rank)**0.5
             # if np.random.rand() < prob:
-            hyperparams[name] = np.random.choice(choices)
+            to_use[name] = np.random.choice(choices)
             # else:
             #     hyperparams[name] = default
             # If target-kl is None, then drop it
-            if name == "target-kl" and hyperparams[name] is None:
-                del hyperparams[name]
+            if name == "target-kl" and to_use[name] is None:
+                del to_use[name]
         # python multigrid/scripts/train_ppo_cleanrl.py --env-id MultiGrid-CompetativeRedBlueDoor-v2-DTDE-Red-Single-with-Obsticle --total-timesteps 100_000
         additional_cmds = []
         exp_name = ""
-        for name, value in hyperparams.items():
+        for name, value in to_use.items():
             hyphen_name = name.replace("_", "-")
             short_name = name.replace("-", "")
+            if short_name == "learningrate":
+                short_name = "lr"
             additional_cmds.append(f"--{hyphen_name}")
             additional_cmds.append(str(value))
             exp_name += f"{short_name}{value}_"
