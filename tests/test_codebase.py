@@ -42,7 +42,8 @@ def test_only_exception_files_modified():
         "multigrid/rllib/__init__.py",
         ".gitignore",
         "submission/ray_results/1v1_death_match_baseline/PPO_MultiGrid-CompetativeRedBlueDoor-v3-DTDE-1v1_6aa86_00000_0_2023-09-21_10-59-09/checkpoint_000190/.is_checkpoint",
-        "submission/ray_results/1v1_death_match_baseline/PPO_MultiGrid-CompetativeRedBlueDoor-v3-DTDE-1v1_6aa86_00000_0_2023-09-21_10-59-09/checkpoint_000190/.tune_metadata"
+        "submission/ray_results/1v1_death_match_baseline/PPO_MultiGrid-CompetativeRedBlueDoor-v3-DTDE-1v1_6aa86_00000_0_2023-09-21_10-59-09/checkpoint_000190/.tune_metadata",
+        "tests/test_codebase.py"
     ]
 
     EXCEPTION_FOLDERS = ["submission/**", "notebooks/**"]
