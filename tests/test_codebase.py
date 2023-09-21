@@ -40,6 +40,9 @@ def test_only_exception_files_modified():
         "multigrid/utils/training_utilis.py",
         "multigrid/wrappers.py",
         "multigrid/rllib/__init__.py",
+        ".gitignore",
+        "submission/ray_results/1v1_death_match_baseline/PPO_MultiGrid-CompetativeRedBlueDoor-v3-DTDE-1v1_6aa86_00000_0_2023-09-21_10-59-09/checkpoint_000190/.is_checkpoint",
+        "submission/ray_results/1v1_death_match_baseline/PPO_MultiGrid-CompetativeRedBlueDoor-v3-DTDE-1v1_6aa86_00000_0_2023-09-21_10-59-09/checkpoint_000190/.tune_metadata"
     ]
 
     EXCEPTION_FOLDERS = ["submission/**", "notebooks/**"]
