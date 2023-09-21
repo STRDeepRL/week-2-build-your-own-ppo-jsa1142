@@ -58,3 +58,43 @@ Only running ~300k steps does not hit the Baseline Thresholds.
 - `episodic_return` should converge to consistently achieve 2.0+ returns, enduring for a minimum of the last 100k time steps.
 - `explained_variance` should stabilize at a level above 0.6 for at least the last 100k time steps.
 - `entropy` should settle at values below 0.3 for a minimum of 100k final training steps.
+
+### Hands-on Experiences on PPO-Specific Hyperparameters
+***Q.2*** If your baseline agent struggles to achieve the Training Baseline Thresholds, or if there's potential for enhancment, now you are getting the chance to fine-tuning the following PPO-specific parameters discussed in class to improve the performance of your agent. You may want to run multiple versions of experinements, so remember to modify `--exp-name` to differentiate between agent configurations. For final submissions, pick the top 3 performing or representable results and present the training metrics via screenshots and specify the number of timesteps and policy updates needed to fulfill or surpass the Training Baseline Thresholds. (Including links to their videos will be ideal)
+
+- **gamma** (default = 0.99)
+- **gae-lambda** (default = 0.95)
+- **clip-coef** (default = 0.2)
+- **clip-vloss** (default = True)
+- **ent-coef** (default = 0.01)
+- **vf-coef** (default = 0.5)
+- **target-kl** (default = None)
+
+Additionally, consider tweaking the following generic Deep RL hyperparameters:
+
+- **num_envs** (default = 8)
+- **batch_size** (default = int(args.num_envs * args.num_steps) = 1024)
+- **num_minibatches** (default = 4)
+- **minibatch_size** (default = int(args.batch_size // args.num_minibatches) = 256)
+- **total_timesteps** (default = 10_000_000)
+- **num_updates** (default = args.total_timesteps // args.batch_size = 9765)
+- **num_steps** (default = 128)
+- **update_epochs** (default = 4)
+
+ChatGPT helps prioritize parameters and gives possible values to try:
+
+```python
+hyperparameters = [
+    ('lr', [3e-4, 1e-4, 3e-5]),
+    ('gamma', [0.98, 0.99, 0.995]),
+    ('gae-lambda', [0.9, 0.92, 0.95, 0.97, 0.98]),
+    ('clip-coef', [0.1, 0.15, 0.2, 0.25, 0.3]),
+    ('ent-coef', [0.005, 0.01, 0.02, 0.03]),
+    ('vf-coef', [0.3, 0.4, 0.5, 0.6, 0.7]),
+    ('target-kl', [0.005, 0.01, 0.02, 0.03]),
+    ('num_steps', [64, 128, 256]),
+    ('num_envs', [4, 8, 16, 32]),
+    ('update_epochs', [3, 4, 5, 6]),
+    ('clip-vloss', [True, False])
+]
+```
