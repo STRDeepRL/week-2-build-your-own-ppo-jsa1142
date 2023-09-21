@@ -81,20 +81,15 @@ Additionally, consider tweaking the following generic Deep RL hyperparameters:
 - **num_steps** (default = 128)
 - **update_epochs** (default = 4)
 
-ChatGPT helps prioritize parameters and gives possible values to try:
+I run a three-stage hyperparameter search in [the hyperparameter search script](./hyperparameter_search.py).
 
-```python
-hyperparameters = [
-    ('lr', [3e-4, 1e-4, 3e-5]),
-    ('gamma', [0.98, 0.99, 0.995]),
-    ('gae-lambda', [0.9, 0.92, 0.95, 0.97, 0.98]),
-    ('clip-coef', [0.1, 0.15, 0.2, 0.25, 0.3]),
-    ('ent-coef', [0.005, 0.01, 0.02, 0.03]),
-    ('vf-coef', [0.3, 0.4, 0.5, 0.6, 0.7]),
-    ('target-kl', [0.005, 0.01, 0.02, 0.03]),
-    ('num_steps', [64, 128, 256]),
-    ('num_envs', [4, 8, 16, 32]),
-    ('update_epochs', [3, 4, 5, 6]),
-    ('clip-vloss', [True, False])
-]
-```
+The only run that came close to possibly hitting the benchmarks was 
+`--learning-rate 0.0003 --gamma 0.98 --gae-lambda 0.97 --clip-coef 0.25 --ent-coef 0.01 --vf-coef 0.6 --target-kl 0.02 --num-steps 128 --num_envs 8 --update_epochs 3 --clip-vloss False`
+and this only ran for 300k steps, so did not get close to the benchmarks. Since there were no fully-trained models, there are no videos to submit.
+
+![Hyperparameter search](hp_search.png)
+
+**Suggestion for future courses**: Performing a long hyperparameter search is not fun or a rewarding learning experience for the student.
+It would have been more rewarding to give us optimal hyperparameters as a way to verify the changes to the code were correct.
+That way we could go through and modify our code, and check if our changes were correct by whether or not the changes resulted in runs that were competitive with the ideal run.
+That would also make further refinements to the hyperparameters more interesting as we would be starting at the baseline.
