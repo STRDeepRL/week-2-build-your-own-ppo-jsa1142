@@ -1,0 +1,15 @@
+artifact_uri: /home/jj/github-classroom/STRDeepRL/week-2-build-your-own-ppo-jsa1142/submission/mlflow/500060631980982079/13de1bf9a53d4704865421a369971cd1/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '500060631980982079'
+lifecycle_stage: active
+run_id: 13de1bf9a53d4704865421a369971cd1
+run_name: PPO_MultiGrid-CompetativeRedBlueDoor-v3-DTDE-1v1_6aa86_00000
+run_uuid: 13de1bf9a53d4704865421a369971cd1
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1695308349719
+status: 1
+tags: []
+user_id: unknown
