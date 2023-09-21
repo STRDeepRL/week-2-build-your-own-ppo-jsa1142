@@ -27,3 +27,7 @@ venv
 # Ignore checkpoints
 *checkpoint_*
 !*checkpoint_000190
+
+# Ignore videos
+*rl-video*
+!*rl-video-episode-19000*
