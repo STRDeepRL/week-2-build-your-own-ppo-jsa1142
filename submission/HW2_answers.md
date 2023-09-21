@@ -85,7 +85,10 @@ I run a three-stage hyperparameter search in [the hyperparameter search script](
 
 The only run that came close to possibly hitting the benchmarks was 
 `--learning-rate 0.0003 --gamma 0.98 --gae-lambda 0.97 --clip-coef 0.25 --ent-coef 0.01 --vf-coef 0.6 --target-kl 0.02 --num-steps 128 --num-envs 8 --update-epochs 3 --clip-vloss False`
-and this only ran for 300k steps, so did not get close to the benchmarks. Since there were no fully-trained models, there are no videos to submit.
+and this only ran for 300k steps, so did not get close to the benchmarks.
+Re-running this model for 10M steps hits the benchmark. This is hitting the benchmark around 2M steps
+
+![CleanRL Training](cleanrl_training.png)
 
 ![Hyperparameter search](hp_search.png)
 
