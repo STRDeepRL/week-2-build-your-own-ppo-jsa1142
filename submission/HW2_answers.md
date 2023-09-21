@@ -93,3 +93,13 @@ and this only ran for 300k steps, so did not get close to the benchmarks. Since 
 It would have been more rewarding to give us optimal hyperparameters as a way to verify the changes to the code were correct.
 That way we could go through and modify our code, and check if our changes were correct by whether or not the changes resulted in runs that were competitive with the ideal run.
 That would also make further refinements to the hyperparameters more interesting as we would be starting at the baseline.
+
+## Task 4: Bring the Lessons Learned from CleanRL to RLlib to solve a 1v1, 🤖 🆚 🤖 Scenario 
+
+As you get familiar with PPO by working through the CleanRL implementation, let's pivot back to RLlib. We'll harness our understanding of hyperparameter tuning to address a 1v1 competition with a pre-trained opponent.
+
+### Q.1 Metrics to Report:
+
+As the same as Task 2&3, document the following training metrics, showcasing them with screenshots. Also, detail the number of timesteps and policy updates that meet or exceed the Training Baseline Thresholds.
+
+**Suggestion for future courses** Give the regex in the same location as the list of metrics. I spent time converting the markdown list to regex before realizing it was in the "tips" section.
