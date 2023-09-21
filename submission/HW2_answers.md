@@ -103,3 +103,7 @@ As you get familiar with PPO by working through the CleanRL implementation, let'
 As the same as Task 2&3, document the following training metrics, showcasing them with screenshots. Also, detail the number of timesteps and policy updates that meet or exceed the Training Baseline Thresholds.
 
 **Suggestion for future courses** Give the regex in the same location as the list of metrics. I spent time converting the markdown list to regex before realizing it was in the "tips" section.
+
+The model is converging around 600k steps:
+
+![Converging model](1v1_converging_model.png)
