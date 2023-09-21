@@ -569,7 +569,7 @@ def main(args):
                         # HW2 DONE -
                         # Determine the value of 'nextnonterminal' and 'nextvalues' for this case
                         # 1 if not terminal, 0 if terminal
-                        nextnonterminal = 1-dones[t]
+                        nextnonterminal = 1-dones[t+1]
                         nextvalues = values[t + 1]
 
                     # Compute the TD error: δ_t = r_t + γ V(s_{t+1}) - V(s_t)
